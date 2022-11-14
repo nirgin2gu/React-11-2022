@@ -8,6 +8,7 @@ import Seaded from "./pages/Seaded";
 import YksikToode from "./pages/YksikToode";
 import HaldaTooteid from "./pages/HaldaTooteid";
 import Poed from "./pages/Poed";
+import Meist from './pages/Meist';
 
 
 
@@ -36,7 +37,9 @@ function App() {
       <Link to="/seaded">
         <button className="nupp">Seaded</button>
       </Link>
-
+      <Link to="/meist">
+        <button className="nupp">Meist</button>
+      </Link>
       
       <Routes>
         
@@ -47,7 +50,8 @@ function App() {
          <Route path="muuda" element={<MuudaToode />} />
          <Route path="seaded" element={<Seaded />} />
          <Route path="poed" element={<Poed />} />
-         <Route path="yksik" element={<YksikToode />} />
+         <Route path="toode" element={<YksikToode />} />
+         <Route path="meist" element={<Meist />} />
 
       </Routes>
     

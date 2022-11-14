@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useRef, useState, } from "react";
 
 function Seaded() {
-    const [keel, uuendaKeel] = useState(localStorage.getItem("keel"));
+    const [keel, uuendaKeel] = useState(localStorage.getItem("keel") || "est" );
     
     const muudaKeelEst = () => {
         uuendaKeel("est");
@@ -14,19 +14,36 @@ function Seaded() {
 
     const muudaKeelRus = () => {
         uuendaKeel("rus");
-        localStorage.setItem("keel", "eng");
+        localStorage.setItem("keel", "rus");
+    }
+
+    const telefonViide = useRef(); //telefonRef (reference/viide)
+    const emailViide = useRef(); //emailRef
+    const sisestaTelefon = () => {
+        localStorage.setItem("telefon", telefonViide.current.value);
+    }
+
+    const sisestaEmail = () => {
+        localStorage.setItem("email", emailViide.current.value);
     }
 
     return ( 
     <div>
         <button onClick={muudaKeelEst}>Eesti</button>
         <button onClick={muudaKeelEng}>Inglise</button>
-        <button onClick={muudaKeelEng}>Inglise</button>
+        <button onClick={muudaKeelEng}>Vene</button>
         
         { keel ==="est" &&    <div>Lehekülg on eesti keelne</div> }
         { keel ==="eng" &&   <div>Lehekülg on inglise keelne</div> }
         { keel ==="rus" &&   <div>Lehekülg on vene keelne</div> }
-
+        <label>Meie telefoninumber</label>
+        <input ref={telefonViide} type = "text" />
+        <button onClick={sisestaTelefon}>Sisesta</button>
+        <br/>
+        
+        <label>Meie e-mail</label>
+        <input ref={emailViide} type = "text" />
+        <button onClick={sisestaEmail}>Sisesta</button>
     </div> );
 }
 
