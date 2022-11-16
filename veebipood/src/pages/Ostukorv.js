@@ -30,7 +30,7 @@ function Ostukorv() {
                 <button onClick= {() => kustuta(index)} >x</button>
                 <button onClick= {() => lisa(element)} >+</button>
                 
-             </div>)}
+            </div>)}
         </div> );
 }
 
