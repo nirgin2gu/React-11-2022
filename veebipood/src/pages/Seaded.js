@@ -1,20 +1,35 @@
 import { useRef, useState, } from "react";
+ 
+//sort muudab järjekorda (a,b)
+// filter vähendab (arv) (element)
+// map asendab igaüht (arv täposelt sama, kogus sama) (element)    (element, j2rjekorranumber)
+
+// splice(mitmendatKustutan, mituTükkiKustutan)
+//poed.delete(j2rjekorraNumber)
 
 function Seaded() {
     const [keel, uuendaKeel] = useState(localStorage.getItem("keel") || "est" );
     
-    const muudaKeelEst = () => {
-        uuendaKeel("est");
-        localStorage.setItem("keel", "est");
-    }
-    const muudaKeelEng = () => {
-        uuendaKeel("eng");
-        localStorage.setItem("keel", "eng");
+    const sisestaEmail = () => {
+        localStorage.setItem("email", emailViide.current.value);
     }
 
-    const muudaKeelRus = () => {
-        uuendaKeel("rus");
-        localStorage.setItem("keel", "rus");
+    // const muudaKeelEst = () => {
+       // uuendaKeel("est");
+      //  localStorage.setItem("keel", "est");
+    //}
+    // const muudaKeelEng = () => {
+     //   uuendaKeel("eng");
+      //  localStorage.setItem("keel", "eng");
+    //}
+
+    //const muudaKeelRus = () => {
+      //  uuendaKeel("rus");
+       // localStorage.setItem("keel", "rus");
+    //}
+    const muudaKeel = (uusKeel) => {
+        uuendaKeel(uusKeel);
+        localStorage.storage.setItem("keel", uusKeel);
     }
 
     const telefonViide = useRef(); //telefonRef (reference/viide)
@@ -23,15 +38,14 @@ function Seaded() {
         localStorage.setItem("telefon", telefonViide.current.value);
     }
 
-    const sisestaEmail = () => {
-        localStorage.setItem("email", emailViide.current.value);
-    }
+    
 
     return ( 
     <div>
-        <button onClick={muudaKeelEst}>Eesti</button>
-        <button onClick={muudaKeelEng}>Inglise</button>
-        <button onClick={muudaKeelEng}>Vene</button>
+        <button onClick={() => muudaKeel("est") } > Eesti</button>
+        <button onClick={() => muudaKeel("eng") } >Inglise</button>
+        <button onClick={() => muudaKeel("rus") } >Vene</button>
+       
         
         { keel ==="est" &&    <div>Lehekülg on eesti keelne</div> }
         { keel ==="eng" &&   <div>Lehekülg on inglise keelne</div> }
