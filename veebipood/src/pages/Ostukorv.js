@@ -1,15 +1,17 @@
 import { useState } from "react";
 
 function Ostukorv() {
-    const [ostukorv, muudaOstukorv] = useState( ["Nobe", "Tesla", "BMW"]);
+    const [ostukorv, muudaOstukorv] = useState(JSON.parse(localStorage.getItem("ostukorv")) || []);
 
     const kustuta = (index) => {
         ostukorv.splice(index,1);
          muudaOstukorv(ostukorv.slice());
+         localStorage.setItem("ostukorv", JSON.stringify(ostukorv));
     }
 
     const tyhjenda = () => {
         muudaOstukorv ([]);
+        localStorage.setItem("ostukorv", JSON.stringify([]));
     }
     
     const lisa = (toode) => {

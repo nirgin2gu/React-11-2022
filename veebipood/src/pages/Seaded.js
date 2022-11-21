@@ -51,7 +51,7 @@ function Seaded() {
         { keel ==="eng" &&   <div>Lehekülg on inglise keelne</div> }
         { keel ==="rus" &&   <div>Lehekülg on vene keelne</div> }
         <label>Meie telefoninumber</label>
-        <input ref={telefonViide} type = "text" />
+        <input defaultValue={localStorage.getItem("telefon")} ref={telefonViide} type = "text" />
         <button onClick={sisestaTelefon}>Sisesta</button>
         <br/>
         
