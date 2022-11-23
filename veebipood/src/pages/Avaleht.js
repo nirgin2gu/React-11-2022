@@ -1,6 +1,10 @@
 import {useState} from "react";
 // ffc
   function Avaleht() {
+    //let kogus = 5; // let tähendab et kuulutan välja uue muutuja ja võrdusmärgiga annan talle väärtuse
+  //kogus = 4; // siin pöördun varasema muutuja poole ja annan talle uue väärtuse võrdusmärgi abil
+  // semikoolon lõpus on vabatahtlik, see tähistab rea lõppu 
+  //            (seda nõutakse ettevõtetes, enda projektides on viisakuse asi)
     const [kogus, uuendaKogus] = useState(5);
     const [sonum, uuendaSonum] = useState("");
     const [laigitud,uuendaLaigitud] = useState(false);

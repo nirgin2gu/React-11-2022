@@ -3,7 +3,6 @@ import {useState, useRef} from "react"
 
 
 function Poed() {
-   // const[poed, muudaPoed] = useState([]);
    const[poed, muudaPoed] = useState(
     [
       {nimi: "Kristiine",aeg: "9-22"},
@@ -15,29 +14,39 @@ function Poed() {
       {nimi: "Lasnamäe", aeg: "8-20"},
           ]);
 
+          const muudaTagasi = () => {
+            muudaPoed( [
+              {nimi: "Kristiine", aeg: "9-22"}, 
+              {nimi: "Põhja-Tallinn", aeg: "9-22"},
+              {nimi: "Mustamäe", aeg: "8-21"},
+              {nimi: "Kesklinn", aeg: "9-23"},
+              {nimi: "Haabersti", aeg: "10-21"},
+              {nimi: "Õismäe", aeg: "10-22"},
+              {nimi: "Lasnamäe", aeg: "8-23"},
+            ]);
+          }
+          
    const sorteeriAZ = () => {
-     // poed.sort((a,b) => b.localeCompare(b));     võiv ka kasutada!!
+    
     poed.sort((a,b) => a.nimi.localeCompare(b.nimi));
-    muudaPoed(poed.slice()); //browseris: parem klõps, inspect, console
+    muudaPoed(poed.slice()); 
    }
-   const sorteeriZA = () => {
-    // poed.sort();                       võib ka neid kasuytada
-    //  poed.reverse();                       ----//-----
-    poed.sort((a,b) => b.localeCompare(a.nimi));
-    poed.sort((a,b) => -1 * a.localeCompare(b));
+   const sorteeriZA = () => {    
+    // poed.sort();
+    // poed.reverse();                
+    poed.sort((a,b) => b.nimi.localeCompare(a.nimi));
+    // poed.sort((a,b) => -1 * a.localeCompare(b));
     muudaPoed(poed.slice());
 }
    const sorteeriS6naJ2rgi = () => {
-poed.sort((a,b) => a.nimi.lenght - b.nimi.lenght);
+poed.sort((a, b) => a.nimi.length - b.nimi.length);
 muudaPoed(poed.slice());
 }
    const filtreeri = () => {
        const tagastus = poed.filter(element => element.nimi.endsWith("mäe"));
         muudaPoed(tagastus);
    }
-        const muudaTagasi = () => {
-             muudaPoed(["Kristiine", "Põhja-Tallinn", "Mustamäe", "Kesklinn", "Haabersti", "Õismäe","Lasnamäe" ]);
-}
+    
 const filtreeriKellelITeine = () => {
     const tagastus = poed.filter(element => element.nimi.charAt(1) === "i");
     muudaPoed(tagastus);
@@ -57,7 +66,7 @@ const filtreeriKellelITeine = () => {
     muudaPoed(poed.slice()); 
   }
 
-  const poodViide = useRef(); //poodRef (muidu paneme Ref poodRef)
+  const poodViide = useRef(); 
   const aegViide = useRef();
    
   const lisaPood = () => {

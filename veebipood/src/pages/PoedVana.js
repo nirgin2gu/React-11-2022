@@ -1,42 +1,44 @@
 import {useState, useRef} from "react"
 
+// sort muudab järjekorda (a,b)
+// filter vähendab       element
+// map asendab igaüht (kogus jääb samaks)    element     (element,j2rjekorraNumber)
 
+// splice(mitmendatKustutan, mituTükkiKustutan)
+// poed.delete(j2rjekorraNumber)
 
 function PoedVana() {
-   
-   const[poed, muudaPoed] = useState(
-    [
-      {nimi: "Kristiine",aeg: "9-22"},
-       "Põhja-Tallinn",
-        "Mustamäe", 
-        "Kesklinn",
-         "Haabersti",
-          "Õismäe",
-           "Lasnamäe"
-          ]);
+   // const poed = ["Kristiine", "Põhja-Tallinn", "Mustamäe", "Kesklinn", "Haabersti", "Õismäe"];
+   const[poed, muudaPoed] = useState(["Kristiine", "Põhja-Tallinn", "Mustamäe", "Kesklinn", "Haabersti", "Õismäe", "Lasnamäe"]);
+    
+     const muudaTagasi = () => {
+             muudaPoed(["Kristiine", "Põhja-Tallinn", "Mustamäe", "Kesklinn", "Haabersti", "Õismäe","Lasnamäe" ]);
+}
 
    const sorteeriAZ = () => {
-     
-    poed.sort();
+     poed.sort();
     muudaPoed(poed.slice()); 
    }
-   const sorteeriZA = () => {
-                         
+    
+   
+     const sorteeriZA = () => {                    
     poed.sort((a,b) => b.localeCompare(a));
     poed.sort((a,b) => -1 * a.localeCompare(b));
     muudaPoed(poed.slice());
 }
+// poed.sort((a,b) => b.localeCompare(a));        10 - 4 = 6            4 - 10      = -6
+    // poed.sort((a,b) => -1 * a.localeCompare(b));                     -1 * (10 - 4)   = -6
+
    const sorteeriS6naJ2rgi = () => {
 poed.sort((a,b) => a.lenght - b.lenght);
 muudaPoed(poed.slice());
 }
    const filtreeri = () => {
+    // poed.filter(element => element.includes("mäe"));
        const tagastus = poed.filter(element => element.endsWith("mäe"));
         muudaPoed(tagastus);
    }
-        const muudaTagasi = () => {
-             muudaPoed(["Kristiine", "Põhja-Tallinn", "Mustamäe", "Kesklinn", "Haabersti", "Õismäe","Lasnamäe" ]);
-}
+        
 const filtreeriKellelITeine = () => {
     const tagastus = poed.filter(element => element.charAt(1) === "i");
     muudaPoed(tagastus);
@@ -51,12 +53,15 @@ const filtreeriKellelITeine = () => {
         const tagastus = poed.map(element => element.toLowerCase());
         muudaPoed(tagastus);
     }
+// console.log("TEGIN HTMLI UUESTI");
+  // const [test, uuendaTesti] = useState("Kapsas");
+
   const kustuta = (j2rjekorraNumber) => {
     poed.slice(j2rjekorraNumber,1);
     muudaPoed(poed.slice()); 
   }
 
-  const poodViide = useRef(); 
+  const poodViide = useRef();  // poodRef
    
   const lisaPood = () => {
     poed.push(poodViide.current.value);  
@@ -65,7 +70,10 @@ const filtreeriKellelITeine = () => {
 
    return ( 
     <div>
-
+{/* <button onClick={() => uuendaTesti("Kapsas")}>Kapsas</button>
+      <button onClick={() => uuendaTesti("Porgand")}>Porgand</button>
+      <button onClick={() => uuendaTesti("Kartul")}>Kartul</button>
+      <div>{test}</div> */}
     <label>Uus pood</label>
     <input ref={poodViide} type = "text" />
     <button onClick={lisaPood} >Sisesta</button>

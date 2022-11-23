@@ -12,17 +12,11 @@ const lisaOstukorvi = (klikitudToode) => {
     localStorage.setItem("ostukorv",ostukorvLS);
 
     ostukorvLS.push(klikitudToode);
-
 }
-
-
 
 //refi asemel klikitud toode
 
-
-
-
-    return (
+return (
          <div>
             {tooted.map((element, index) =>
                  <div key={index}>

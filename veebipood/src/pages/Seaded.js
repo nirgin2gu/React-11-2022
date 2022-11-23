@@ -10,6 +10,13 @@ import { useRef, useState, } from "react";
 function Seaded() {
     const [keel, uuendaKeel] = useState(localStorage.getItem("keel") || "est" );
     
+    const telefonViide = useRef(); //telefonRef (reference/viide)
+    const emailViide = useRef(); //emailRef
+    
+    const sisestaTelefon = () => {
+        localStorage.setItem("telefon", telefonViide.current.value);
+    }
+
     const sisestaEmail = () => {
         localStorage.setItem("email", emailViide.current.value);
     }
@@ -32,14 +39,9 @@ function Seaded() {
         localStorage.storage.setItem("keel", uusKeel);
     }
 
-    const telefonViide = useRef(); //telefonRef (reference/viide)
-    const emailViide = useRef(); //emailRef
-    const sisestaTelefon = () => {
-        localStorage.setItem("telefon", telefonViide.current.value);
-    }
-
     
-
+    
+    
     return ( 
     <div>
         <button onClick={() => muudaKeel("est") } > Eesti</button>
@@ -56,7 +58,7 @@ function Seaded() {
         <br/>
         
         <label>Meie e-mail</label>
-        <input ref={emailViide} type = "text" />
+        <input defaultValue={localStorage.getItem("email")} ref={emailViide} type = "text" />
         <button onClick={sisestaEmail}>Sisesta</button>
     </div> );
 }

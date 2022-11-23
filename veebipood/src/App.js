@@ -12,7 +12,15 @@ import Meist from './pages/Meist';
 import Tooted from './pages/Tooted';
 import Albums from './pages/Albums';
 
+// KUI midagi ei tööta, on 2 kohta mida vaadata:
 
+// kompileerimise errorid
+// must/hall taust, kus on kirjeldatud mis on viga
+// 1. kus npm start töötab
+
+// runtime errorid
+// leht on üleni valge
+// 2. parem klõps lehel -> inspect -> console
 
 function App() {
   return (
@@ -21,10 +29,6 @@ function App() {
       src="https://upload.wikimedia.org/wikipedia/commons/6/63/Norfolk_potato_field_-_geograph.org.uk_-_180521.jpg" 
       alt="" />
       </Link>
-        
-      
-    
-
         <Link to="/ostukorv">
         <button className="nupp">Ostukorvi</button>
         </Link>
@@ -33,12 +37,10 @@ function App() {
         </Link>
 
       <Link to="/halda">
-        <button className="nupp">Toodet lisama</button>
+        <button className="nupp">Toodet haldama</button>
       </Link>
 
-      <Link to="/muuda">
-        <button className="nupp">Muuda</button>
-      </Link>
+      
       <Link to="/albumid">
         <button className="nupp">Albumid</button>
       </Link>
@@ -58,7 +60,7 @@ function App() {
       
       <Routes>
         
-         {/* err.ee ---> Avaleht */}
+         {/* err.ee ---> Avaleht.js sisu */}
          <Route path="" element={ <Avaleht />} />
          <Route path="tooted" element={<Tooted />} />
          <Route path="ostukorv" element={<Ostukorv />} />
