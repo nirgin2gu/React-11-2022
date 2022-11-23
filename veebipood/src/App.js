@@ -72,6 +72,7 @@ function App() {
          <Route path="toode/:index" element={<YksikToode />} />
          <Route path="meist" element={<Meist />} />
          <Route path="albumid" element={<Albums />} />
+         <Route path="../ecoop.json" element={<Coop />} />
 
       </Routes>
     

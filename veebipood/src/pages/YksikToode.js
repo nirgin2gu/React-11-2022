@@ -12,7 +12,11 @@ function YksikToode() {
     return ( 
     <div>
         { /*<div>{index}</div> */}
-        <div>{leitudToode}</div>
+        <div><img src={leitudToode.pilt} alt="" />
+                   <div>{leitudToode.nimi}</div> 
+                   <div>{leitudToode.hind} $</div> 
+                   <div>{leitudToode.aktiivne + 0}</div>
+                    </div>
         { leitudToode === undefined && <div>Toodet ei leitud</div>}
         </div> );
 }

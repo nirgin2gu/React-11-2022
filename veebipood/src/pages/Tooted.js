@@ -11,7 +11,7 @@ const lisaOstukorvi = (klikitudToode) => {
     ostukorvLS = JSON.stringify(ostukorvLS);
     localStorage.setItem("ostukorv",ostukorvLS);
 
-    ostukorvLS.push(klikitudToode);
+   
 }
 
 //refi asemel klikitud toode
@@ -21,7 +21,12 @@ return (
             {tooted.map((element, index) =>
                  <div key={index}>
                     <Link to={"/toode/" + index} >
-                    {element}
+                 { /*  Objects are not valid as React child {found:objects with keys nimi, hind, pilt, aktiivne}) */ }
+                   <img src={element.pilt} alt="" />
+                   <div>{element.nimi}</div> 
+                   <div>{element.hind}</div> 
+                   <div>{element.aktiivne + 0}</div> 
+                  
                     </Link>
                     <button onClick={() => lisaOstukorvi(element)}>Lisa ostukorvi</button>
                     </div>)}
@@ -30,3 +35,4 @@ return (
 
 export default Tooted;
                     
+                   

@@ -20,6 +20,13 @@ function Ostukorv() {
         muudaOstukorv(ostukorv.slice());
     }
 
+    const ostukorviKogusumma = () => {
+        let summa = 0;
+        ostukorv.forEach(element => summa = summa + element.hind);
+        return summa;
+
+    }
+
     return (
         <div>
             {ostukorv.length > 0 &&<button onClick={tyhjenda} >Tühjenda</button>}
@@ -28,11 +35,15 @@ function Ostukorv() {
             {ostukorv.length > 1 && <div>Ostukorvis on {ostukorv.length} eset</div> }
            {ostukorv.map((element, index) =>
              <div key ={index}>
-                {element}
+                <img src={element.pilt} alt="" />
+                   <div>{element.nimi}</div> 
+                   <div>{element.hind} $</div> 
+                   <div>{element.aktiivne + 0}</div> 
                 <button onClick= {() => kustuta(index)} >x</button>
                 <button onClick= {() => lisa(element)} >+</button>
                 
             </div>)}
+            <div>Ostukorvi kogusumma: {ostukorviKogusumma()} €</div>
         </div> );
 }
 
